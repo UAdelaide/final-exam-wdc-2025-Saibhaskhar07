@@ -94,3 +94,4 @@ module.exports = router;
 
 
 //q17
+router.get('/api/dogs')
