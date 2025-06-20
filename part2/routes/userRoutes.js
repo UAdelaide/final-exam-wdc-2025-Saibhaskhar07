@@ -79,7 +79,7 @@ router.post('/dogs',(req,res) => {
   if(!owner_id) return res.status(401).json({error:'Not Logged In'}) ;
 
   try{
-    const [rows] = await db.query(`SELECT dog_id, name FROM Dogs WHERE`)
+    const [rows] = await db.query(`SELECT dog_id, name FROM Dogs WHERE owner_id = ? `,[owner_id]) ;
   }
 })
 
