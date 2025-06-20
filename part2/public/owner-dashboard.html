@@ -24,12 +24,12 @@
       <div class="card-body">
         <form @submit.prevent="submitWalkRequest">
           <div class="mb-3">
-            <!-- CHANGED FOR THIS  -->
+            <!-- CHANGED FOR dropdown  -->
             <label class="form-label">Choose Dog</label>
-<select v-model="form.dog_id" class="form-control" required>
-  <option disabled value="">-- Choose your kutta --</option>
-  <option v-for="dog in dogs" :value="dog.dog_id">{{ dog.name }}</option>
-</select>
+            <select v-model="form.dog_id" class="form-control" required>
+              <option disabled value="">-- Choose your kutta --</option>
+              <option v-for="dog in dogs" :value="dog.dog_id">{{ dog.name }}</option>
+            </select>
           </div>
           <div class="mb-3">
             <label class="form-label">Requested Date & Time</label>
@@ -89,7 +89,7 @@
         const message = ref('');
         const error = ref('');
         // added for q15
-        const dogs = ref([]) ;
+        const dogs = ref([]);
 
         async function loadWalks() {
           try {
@@ -101,13 +101,13 @@
         }
         // loading dogs
         async function loadDogs() {
-          try{
+          try {
             const res = await fetch('/api/users/dogs', {
               method: 'GET',
-              credentials:"include"
-            }) ;
-            if(!res.ok) throw new Error('Failed') ;
-            dogs.value = await res.json() ;
+              credentials: "include"
+            });
+            if (!res.ok) throw new Error('Failed');
+            dogs.value = await res.json();
           } catch (err) {
             error.value = err.message;
           }
