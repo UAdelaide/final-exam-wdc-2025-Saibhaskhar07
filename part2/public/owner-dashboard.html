@@ -26,7 +26,7 @@
             <label class="form-label">Choose Dog</label>
             <select v-model="form.dog_id" class="form-control" required>
               <option disabled value="">-- Choose your kutta --</option>
-              <option v-for="dog in dogs"
+              <option v-for="dog in dogs" : value="dog.dog_id"></option>
           </div>
           <div class="mb-3">
             <label class="form-label">Requested Date & Time</label>
