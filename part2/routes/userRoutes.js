@@ -79,7 +79,7 @@ router.post('/dogs',(req,res) => {
   if(!owner_id) return res.status(401).json({error:'Not Logged In'}) ;
 
   try{
-    const [rows] = await db.query()
+    const [rows] = await db.query(`Select`)
   }
 })
 
