@@ -163,11 +163,11 @@
             this.dog = dogsWithPhotos;
 
           } catch (err){
-            
+            this.error = err.message
           }
 
         }
-      }
+      },
     }).mount('#app');
   </script>
 
