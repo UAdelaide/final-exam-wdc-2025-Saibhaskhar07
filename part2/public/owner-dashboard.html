@@ -107,6 +107,7 @@
               credentials:"include"
             }) ;
             if(!res.ok) throw new Error('Failed') ;
+            window.location.href=''
             dogs.value = await res.json() ;
           } catch (err) {
             error.value = error.message;
