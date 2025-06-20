@@ -56,4 +56,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+// Delete route
+router.post('/logout',)
 module.exports = router;
