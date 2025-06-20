@@ -88,7 +88,8 @@
         const walks = ref([]);
         const message = ref('');
         const error = ref('');
-        const dogs = ref
+        // added for q15
+        const dogs = ref([]) ;
 
         async function loadWalks() {
           try {
@@ -99,6 +100,7 @@
           }
         }
 
+        
         // Created a log out request sender
         async function logout() {
           try {
