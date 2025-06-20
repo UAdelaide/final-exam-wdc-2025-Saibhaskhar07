@@ -19,10 +19,15 @@
 
   <div id="app" class="container py-5">
     <div class="login-wrapper">
-    <h2 class="text-centre mb-4 text-primary"> {{message}} </h2> 
+    <h2 class="text-centre mb-4 text-primary"> {{message}} </h2>
 
-    <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
-    <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
+    <form @submit.prevent="handleLogin">
+      <div class="mb-3">
+        <label for="username" class="form-label"> Username </label>
+        <input type="text" v-modelclass="form-control" id="username-input" value="username">
+      </div>
+
+
   </div>
 
   <script>
