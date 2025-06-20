@@ -154,7 +154,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
 
 app.get('/api/walkers/summary', async (req, res) => {
   try {
-    const [WalkerSummary] = await db.execute('SELECT Users.username, COUNT(WalkRatings.rating_id, AVG(WalkRatings.rating),COUNT(CASE WHEN WalkRequest.status = "Completed" AND WalkApplication.status = "Accepted" THEN WalkRequest.request_id END) FROM Users LEFT JOIN');
+    const [WalkerSummary] = await db.execute('SELECT Users.username, COUNT(WalkRatings.rating_id, AVG(WalkRatings.rating),COUNT(CASE WHEN WalkRequest.status = "Completed" AND WalkApplication.status = "Accepted" THEN WalkRequest.request_id END) FROM Users LEFT JOIN WalkRatings On Users.user_id ');
     res.json(WalkerSummary);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch Walker Summary' });
