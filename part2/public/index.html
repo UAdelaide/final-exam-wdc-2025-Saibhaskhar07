@@ -140,7 +140,8 @@
         async function fetchDogs() {
           try{
             const res = await fetch('/api/dogs');
-            if(!res.ok) throw
+            if(!res.ok) throw new Error('Failed');
+            
           }
 
         }
