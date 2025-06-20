@@ -56,6 +56,21 @@
           }
         }
 
+         async function logout() {
+          try{
+            const res = await fetch('/logout',{
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'}
+            }) ;
+            const data = await res.json()
+            if(!res.ok) throw new Error(data.error || 'Logout Unsuccessful!');
+            window.location.href='index.html';
+          } catch(err) {
+            error.value = err.message;
+          }
+
+        }
+
         async function applyToWalk(requestId) {
           try {
             const res = await fetch(`/api/walks/${requestId}/apply`, {
@@ -83,7 +98,8 @@
           walks,
           message,
           error,
-          applyToWalk
+          applyToWalk,
+          logout
         };
       }
     }).mount('#app');
