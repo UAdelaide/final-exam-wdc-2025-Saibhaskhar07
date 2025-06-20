@@ -95,7 +95,7 @@ module.exports = router;
 
 
 //q17
-router.get('/api/dogs',async(req,res) => {
+router.get('/api/dog',async(req,res) => {
   try {
     const[rows] = await db.query(`SELECT dog_id, name, size, owner_id FROM Dogs`) ;
     res.json(rows);
