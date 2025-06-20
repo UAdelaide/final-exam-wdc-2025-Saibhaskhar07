@@ -154,7 +154,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
 
 app.get('/api/walkers/summary', async (req, res) => {
   try {
-    const [WalkerSummary] = await db.execute('SELECT Users.username');
+    const [WalkerSummary] = await db.execute('SELECT Users.username, COUNT(Walker');
     res.json(WalkerSummary);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch Walker Summary' });
