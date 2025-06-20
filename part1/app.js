@@ -63,12 +63,14 @@ let db ;
 
     await db.execute(`
       CREATE TABLE IF NOT EXISTS WalkRequests (
-        user_id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(50) UNIQUE NOT NULL,
-        email VARCHAR(100) UNIQUE NOT NULL,
-        password_hash VARCHAR(255) NOT NULL,
-        role ENUM('owner', 'walker') NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        request_id INT AUTO_INCREMENT PRIMARY KEY,
+        dog_id INT NOT NULL,
+        requested_time DATETIME NOT NULL,
+        duration_minutes INT NOT NULL,
+        location VARCHAR(255) NOT NULL,
+        status ENUM('open', 'accepted', 'completed', 'cancelled') DEFAULT 'open',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (dog_id) REFERENCES Dogs(dog_id)
         )
     `);
 
