@@ -170,4 +170,7 @@ section {
     border-radius: 0.25rem ;
 }
 
-.form-control
+.form-control:focus{
+    border-color: #80bdff;
+    box sh
+}
