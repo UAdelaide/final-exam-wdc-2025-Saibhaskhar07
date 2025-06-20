@@ -17,25 +17,6 @@
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
   </div> -->
 
-<div id="app" class="container py-5">
-    <h1 class="mb-4 text-primary">{{ message }}</h1>
-    <p class="lead">Connect with trusted walkers for your beloved dog!</p>
-
-    <form @submit.prevent="handleLogin">
-      <div class="mb-3">
-        <label for="username-input" class="form-label" > Username </label>
-        <input type ="text" class="form-control" id="username-input" value="username">
-      </div>
-
-      <div class="mb-4">
-         <label for="password-input" class="form-label" > Password </label>
-         <div class="passwordInput Wrapper">
-         <input type="password" class="form-control" id="password-input" value=".........">
-         </div>
-      </div>
-    </form>
-
-
   <script>
     const { createApp } = Vue;
     createApp({
