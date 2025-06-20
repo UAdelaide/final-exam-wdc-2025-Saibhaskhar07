@@ -145,7 +145,7 @@ app.get('/api/Dogs', async (req, res) => {
 
 app.get('/api/walkrequests/open', async (req, res) => {
   try {
-    const [Dogs] = await db.execute('SELECT ');
+    const [Dogs] = await db.execute('SELECT WalkRequest');
     res.json(Dogs);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch Work requests' });
