@@ -109,7 +109,7 @@
             if(!res.ok) throw new Error('Failed') ;
             dogs.value = await res.json() ;
           } catch (err) {
-            error.value = error.message;
+            error.value = err.message;
           }
 
         }
