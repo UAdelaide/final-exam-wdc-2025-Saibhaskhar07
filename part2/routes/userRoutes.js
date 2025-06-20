@@ -86,6 +86,8 @@ router.get('/dogs', async(req,res) => {
 })
 
 //
-router.get('/me')
+router.get('/me', (req,res)=>{
+  if(!req.session.user_id)
+})
 
 module.exports = router;
