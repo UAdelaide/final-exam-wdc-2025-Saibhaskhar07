@@ -145,7 +145,7 @@ app.get('/api/Dogs', async (req, res) => {
 
 app.get('/api/walkrequests/open', async (req, res) => {
   try {
-    const [Dogs] = await db.execute('SELECT WalkRequests.request_id, Dogs.name, WalkRequests.requested_time, WalkRequests.duration_minutes, WalkRequests.location, Users.username FROM WalkRequests INNER JOIN Dogs ON WalkRequests.dog_id = Dogs.dog_id INNER JOIN USERS ON Dogs.owner_id = Users.user_id WHERE WalkRequests.Status = "open");
+    const [WalkRequests] = await db.execute('SELECT WalkRequests.request_id, Dogs.name, WalkRequests.requested_time, WalkRequests.duration_minutes, WalkRequests.location, Users.username FROM WalkRequests INNER JOIN Dogs ON WalkRequests.dog_id = Dogs.dog_id INNER JOIN USERS ON Dogs.owner_id = Users.user_id WHERE WalkRequests.Status = "open"')
     res.json(Dogs);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch Work requests' });
