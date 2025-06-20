@@ -50,8 +50,8 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    req.session.user_id = rows[0].user_id;
-    req.session.role = rows[0].role;
+    req.session.user_id=rows[0].user_id;
+    req.session.role=rows[0].role;
 
 
     res.json({ message: 'Login successful', user: rows[0] });
@@ -62,28 +62,26 @@ router.post('/login', async (req, res) => {
 
 
 // Delete route
-router.post('/logout', (req, res) => {
-  req.session.destroy(err => {
-    if (err) {
-      return res.status(500).json({ error: 'Logout Unsuccessful' });
+router.post('/logout',(req,res) => {
+  req.session.destroy(err=>{
+    if(err) {
+      return res.status(500).json({error:'Logout Unsuccessful'});
     }
     res.clearCookie('connect.sid');
-    res.json({ message: 'Logout Successful!' })
+    res.json({message: 'Logout Successful!'})
   });
 });
 
 
 //Dogs route
-router.post('/dogs', (req, res) => {
+router.post('/dogs',(req,res) => {
   const owner_id = req.session.user_id;
-  if (!owner_id) return res.status(401).json({ error: 'Not Logged In' });
+  if(!owner_id) return res.status(401).json({error:'Not Logged In'}) ;
 
-  try {
-    const [rows] = await db.query(`SELECT dog_id, name FROM Dogs WHERE owner_id = ? `, [owner_id]);
+  try{
+    const [rows] = await db.query(`SELECT dog_id, name FROM Dogs WHERE owner_id = ? `,[owner_id]) ;
     res.json(rows);
-  } catch (error) {
-    res.status(500).json({ error: 'Login failed' });
-    });
-  });
+  } catch (error)
+})
 
 module.exports = router;
