@@ -75,7 +75,7 @@ router.post('/logout',(req,res) => {
 
 //Dogs route
 router.post('/dogs',(req,res) => {
-  
+  const owner_id = req
 })
 
 module.exports = router;
