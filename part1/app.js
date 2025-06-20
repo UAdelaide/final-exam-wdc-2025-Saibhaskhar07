@@ -111,14 +111,16 @@ let db ;
         ('bobwalker','bob@example.com','hashed456','walker'),
         ('carol123','carol@example.com','hashed789','owner'),
         ('mackenzie589','kenize@gmail.com','hashed1010','owner'),
-        ('kyle','kyle@gmail.com','hashed8797','walker') ;
+        ('kyle','kyle@gmail.com','hashed8797','walker')
       `);
 
       await db.execute(`
-        INSERT INTO Dogs (title, author) VALUES
-        ('1984', 'George Orwell'),
-        ('To Kill a Mockingbird', 'Harper Lee'),
-        ('Brave New World', 'Aldous Huxley')
+        INSERT INTO Dogs(owner_id,name,size)
+VALUES((SELECT user_id FROM Users WHERE username = 'alice123'),'Max','medium'),
+((SELECT user_id FROM Users WHERE username = 'carol123'),'Bella','small'),
+((SELECT user_id FROM Users WHERE username = 'carol123'),'Spencer','small'),
+    -> ((SELECT user_id FROM Users WHERE username = 'alice123'),'Bruno','large'),
+    -> ((SELECT user_id FROM Users WHERE username = 'mackenzie589'),'Milo','medium')
       `);
 
       await db.execute(`
