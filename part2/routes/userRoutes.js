@@ -94,4 +94,6 @@ module.exports = router;
 
 
 //q17
-router.get('/api/dogs')
+router.get('/api/dogs',async(req,res) => {
+  
+})
