@@ -22,8 +22,8 @@
       <div class="card-body">
         <form @submit.prevent="submitWalkRequest">
           <div class="mb-3">
-            <label class="form-label">Dog ID</label>
-            <input v-model="form.dog_id" type="number" class="form-control" required>
+            <label class="form-label">Choose Dog</label>
+            <select v-model="form.dog_id" type="number" class="form-control" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Requested Date & Time</label>
@@ -139,7 +139,7 @@
           loadWalks();
         });
 
-        // changed return to include logout 
+        // changed return to include logout
         return {
           form,
           walks,
