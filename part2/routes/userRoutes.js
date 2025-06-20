@@ -28,12 +28,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.get('/me', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ error: 'Not logged in' });
-  }
-  res.json(req.session.user);
-});
 
 // POST login (new version)
 router.post('/login', async (req, res) => {
@@ -85,7 +79,7 @@ router.get('/dogs', async(req,res) => {
   }
 })
 
-//
+// q16
 router.get('/me', (req,res)=>{
   if(!req.session.user_id) {
     return res.status(401).json({error:'Not logged in '});
@@ -94,6 +88,6 @@ router.get('/me', (req,res)=>{
     user_id: req.session.user_id,
     role: req.session.role
   }) ;
-}) ; 
+}) ;
 
 module.exports = router;
