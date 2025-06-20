@@ -183,5 +183,7 @@ section {
 }
 .password-input-wrapper input{
     flex-grow: 1;
-    border-r;
+    border-right: none;
+    border-bottom-right-radius: 0%;
+    border-to
 }
