@@ -96,7 +96,8 @@
               method: 'POST',
               headers: {'Content-Type': 'application/json'}
             }) ;
-            const data = await
+            const data = await res.json()
+            if(!res.ok)
           }
 
         }
