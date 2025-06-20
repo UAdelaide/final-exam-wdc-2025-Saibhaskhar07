@@ -26,10 +26,10 @@
           <div class="mb-3">
             <!-- CHANGED FOR THIS  -->
             <label class="form-label">Choose Dog</label>
-            <select v-model="form.dog.name" class="form-control" required>
-              <option disabled value="">-- Choose your kutta --</option>
-              <option v-for="dog in dogs" :value="dog.name"> {{dog.name}}</option>
-            </select>
+<select v-model="form.dog_id" class="form-control" required>
+  <option disabled value="">-- Choose your kutta --</option>
+  <option v-for="dog in dogs" :value="dog.dog_id">{{ dog.name }}</option>
+</select>
           </div>
           <div class="mb-3">
             <label class="form-label">Requested Date & Time</label>
