@@ -106,7 +106,7 @@
               method: 'GET',
               credentials:"include"
             }) ;
-            if(!res)
+            if(!res.ok) throw
           }
 
         }
