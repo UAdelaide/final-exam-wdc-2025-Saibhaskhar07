@@ -172,5 +172,5 @@ section {
 
 .form-control:focus{
     border-color: #80bdff;
-    box-shadow:  ;
+    background-color: #ffffe0;
 }
