@@ -82,7 +82,7 @@ router.post('/dogs',(req,res) => {
     const [rows] = await db.query(`SELECT dog_id, name FROM Dogs WHERE owner_id = ? `,[owner_id]) ;
     res.json(rows);
   } catch (error) {
-    res.status(500).json({error})
+    res.status(500).json({error: 'Logout failed'}) ;
   }
 })
 
