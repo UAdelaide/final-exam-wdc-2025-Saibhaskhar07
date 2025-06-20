@@ -139,10 +139,10 @@ let db ;
 })();
 
 // Route to return books as JSON
-app.get('/api/Users', async (req, res) => {
+app.get('/api/Dogs', async (req, res) => {
   try {
-    const [Users] = await db.execute('SELECT * FROM Users');
-    res.json(Users);
+    const [Dogs] = await db.execute('SELECT * FROM Dogs');
+    res.json(Dogs);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch Users' });
   }
