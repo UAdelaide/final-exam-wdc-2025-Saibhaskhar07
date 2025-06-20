@@ -93,7 +93,7 @@ router.get('/me', (req,res)=>{
   res.json({
     user_id: req.session.user_id,
     role: req.session.role
-  })
-})
+  }) ;
+}) ; 
 
 module.exports = router;
