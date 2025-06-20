@@ -144,7 +144,7 @@
             const dogsData = await res.json() ;
 
             const dogsWithPhotos = await Promise.all(
-              
+              dogsData.map(as)
             )
 
           }
