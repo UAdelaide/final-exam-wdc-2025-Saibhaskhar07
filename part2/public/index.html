@@ -140,7 +140,7 @@
         async function fetchDogs() {
           try{
             const res = await fetch('/api/dogs');
-            if
+            if(!res.ok) throw
           }
 
         }
