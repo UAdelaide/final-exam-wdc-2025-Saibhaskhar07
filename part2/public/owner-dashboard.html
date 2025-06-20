@@ -106,7 +106,8 @@
               method: 'GET',
               credentials:"include"
             }) ;
-            if(!res.ok) throw
+            if(!res.ok) throw new Error('Failed') ;
+            dogs.value
           }
 
         }
