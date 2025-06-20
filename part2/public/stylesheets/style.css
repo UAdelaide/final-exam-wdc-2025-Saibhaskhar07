@@ -185,5 +185,5 @@ section {
     flex-grow: 1;
     border-right: none;
     border-bottom-right-radius: 0%;
-    border-to
+    border-top-right-radius: 0%;
 }
