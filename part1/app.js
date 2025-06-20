@@ -154,10 +154,10 @@ app.get('/api/walkrequests/open', async (req, res) => {
 
 app.get('/api/walkers/summary', async (req, res) => {
   try {
-    const [Walk] = await db.execute('SELECT * FROM Dogs');
-    res.json(Dogs);
+    const [WalkerSummary] = await db.execute('SELECT * FROM Dogs');
+    res.json(WalkerSummary);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch Dogs' });
+    res.status(500).json({ error: 'Failed to fetch WalkerSummary' });
   }
 });
 app.use(express.static(path.join(__dirname, 'public')));
