@@ -81,7 +81,8 @@
             const res = await fetch('/api/users/me',{
               credentials:"include"
             }) ;
-            if(res)
+            if(!res.ok) throw new Error('Failed to fetch user');
+            
           }
 
         }
