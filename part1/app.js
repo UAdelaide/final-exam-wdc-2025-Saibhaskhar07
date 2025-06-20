@@ -124,10 +124,12 @@ let db ;
       `);
 
       await db.execute(`
-        INSERT INTO books (title, author) VALUES
-        ('1984', 'George Orwell'),
-        ('To Kill a Mockingbird', 'Harper Lee'),
-        ('Brave New World', 'Aldous Huxley')
+    INSERT INTO WalkRequests(dog_id,requested_time,duration_minutes,location,status)
+VALUES((SELECT dog_id FROM Dogs WHERE name = 'Max'),'2025-06-10 08:00:00',30,'Parklands','open'),
+((SELECT dog_id FROM Dogs WHERE name = 'Bella'),'2025-06-10 09:30:00',45,'Beachside Ave','accepted'),
+((SELECT dog_id FROM Dogs WHERE name = 'Spencer'),'2025-06-11 09:00:00',60,'Countryside Blvd','open'),
+((SELECT dog_id FROM Dogs WHERE name = 'Bruno'),'2025-06-11 10:30:00',20,'Military Road','open'),
+        ((SELECT dog_id FROM Dogs WHERE name = 'Milo'),'2025-06-11 16:30:00',40,'Churchill Road','accepted');
       `);
 
     }
