@@ -141,8 +141,8 @@ let db ;
 // Route to return books as JSON
 app.get('/', async (req, res) => {
   try {
-    const [books] = await db.execute('SELECT * FROM Users');
-    res.json(Users));
+    const [Users] = await db.execute('SELECT * FROM Users');
+    res.json(Users);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch books' });
   }
