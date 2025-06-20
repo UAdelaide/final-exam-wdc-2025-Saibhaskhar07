@@ -47,6 +47,7 @@
         const message = ref('');
         const error = ref('');
         const user = 3;
+        let current
 
         async function loadWalkRequests() {
           try {
@@ -74,7 +75,7 @@
 
         }
 
-        
+
 
         async function applyToWalk(requestId) {
           try {
