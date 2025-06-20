@@ -88,8 +88,9 @@ router.get('/dogs', async(req,res) => {
 //
 router.get('/me', (req,res)=>{
   if(!req.session.user_id) {
-    return res.status(401).json({error})
+    return res.status(401).json({error:'Not logged in '});
   }
+  res.json
 })
 
 module.exports = router;
