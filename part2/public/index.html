@@ -146,7 +146,7 @@
             const dogsWithPhotos = await Promise.all(
               dogsData.map(async (dog)=> {
                 try {
-                  const imgRes
+                  const imgRes = await fetch('https://dog.ceo/api/breeds/image/random')
                 }
               })
             )
