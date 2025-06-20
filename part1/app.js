@@ -137,4 +137,17 @@ let db ;
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
   }
 })();
+
+// Route to return books as JSON
+app.get('/', async (req, res) => {
+  try {
+    const [books] = await db.execute('SELECT * FROM books');
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch books' });
+  }
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 module.exports = app;
