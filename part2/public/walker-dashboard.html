@@ -82,7 +82,7 @@
               credentials:"include"
             }) ;
             if(!res.ok) throw new Error('Failed to fetch user');
-            
+            currentUser.value = await res.json();
           }
 
         }
