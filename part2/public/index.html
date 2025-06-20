@@ -39,9 +39,9 @@
         <button type="submit" class="btn btn-primary"> Log In</button>
       </form>
 
-      <hr/>
+      <hr />
 
-      <h1 class ="mb-4 text-primary"> All Dogs </h1>
+      <h1 class="mb-4 text-primary"> All Dogs </h1>
       <table class="table table -striped" v-if="dogs.length">
         <thead>
           <tr>
@@ -58,8 +58,8 @@
             <td>{{dog.name}}</td>
             <td>{{dog.size}}</td>
             <td>{{dog.owner_id}}</td>
-            <td> <img :src="https://dog.ceo/api/breeds/image/random" alt="Doggy image" width="100" height="100"/>
-             </td>
+            <td> <img :src="https://dog.ceo/api/breeds/image/random" alt="Doggy image" width="100" height="100" />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -81,64 +81,68 @@
     }).mount('#app');
   </script> -->
 
-<script src="https://unpkg.com/vue@3"></script>
+  <script src="https://unpkg.com/vue@3"></script>
 
- <script>
-  const { createApp } = Vue;
+  <script>
+    const { createApp } = Vue;
 
-  createApp({
-    data() {
-      return {
-        message: 'Welcome to the Dog Walking Service!',
-        username: '',
-        password: '',
-        error: '',
-        success: ''
-      };
-    },
-    methods: {
-      async handleLogin() {
-        try {
-          const response = await fetch('/api/users/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              username: this.username,
-              password: this.password
-            })
-          });
+    createApp({
+      data() {
+        return {
+          message: 'Welcome to the Dog Walking Service!',
+          username: '',
+          password: '',
+          error: '',
+          success: ''
+        };
+      },
+      methods: {
+        async handleLogin() {
+          try {
+            const response = await fetch('/api/users/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                username: this.username,
+                password: this.password
+              })
+            });
 
-          const data = await response.json();
+            const data = await response.json();
 
-          if (!response.ok) {
-            this.error = data.error || 'Login failed';
+            if (!response.ok) {
+              this.error = data.error || 'Login failed';
+              this.success = '';
+            } else {
+              this.success = data.message;
+              this.error = '';
+
+              console.log('Logged in user:', data.user);
+              if (data.user.role === 'owner') {
+                window.location.href = 'owner-dashboard.html';
+              } else if (data.user.role === 'walker') {
+                window.location.href = 'walker-dashboard.html';
+              } else {
+                this.error = 'Unknown role';
+                this.success = '';
+              }
+
+
+            }
+          } catch (err) {
+            this.error = 'Network error';
             this.success = '';
-          } else {
-            this.success = data.message;
-            this.error = '';
-
-            console.log('Logged in user:', data.user);
-            if (data.user.role === 'owner') {
-        window.location.href = 'owner-dashboard.html';
-      } else if (data.user.role === 'walker') {
-        window.location.href = 'walker-dashboard.html';
-      } else {
-        this.error = 'Unknown role';
-        this.success = '';
-      }
-
-
           }
-        } catch (err) {
-          this.error = 'Network error';
-          this.success = '';
+        }
+
+        async function name(params) {
+          
         }
       }
-    }
-  }).mount('#app');
-</script>
+    }).mount('#app');
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
