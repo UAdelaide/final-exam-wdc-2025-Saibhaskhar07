@@ -76,7 +76,11 @@ router.post('/logout',(req,res) => {
 //Dogs route
 router.post('/dogs',(req,res) => {
   const owner_id = req.session.user_id;
-  if(!owner_id) return res.status(401).json({error:'Not Logged In'})
+  if(!owner_id) return res.status(401).json({error:'Not Logged In'}) ;
+
+  try{
+    const 
+  }
 })
 
 module.exports = router;
