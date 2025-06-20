@@ -108,7 +108,7 @@
             }) ;
             if(!res.ok) throw new Error('Failed') ;
             dogs.value = await res.json() ;
-          } catch (err) {
+          } catch (error) {
             error.value = err.message;
           }
 
