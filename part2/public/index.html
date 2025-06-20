@@ -56,7 +56,7 @@
 
   <!-- Just testing for now  -->
 
-  <script>
+ <script>
   const { createApp } = Vue;
 
   createApp({
@@ -65,18 +65,43 @@
         message: 'Welcome to the Dog Walking Service!',
         username: '',
         password: '',
-        error: ''
+        error: '',
+        success: ''
       };
     },
     methods: {
-      handleLogin() {
-        // You can replace this with your real logic later
-        alert(`Username: ${this.username}, Password: ${this.password}`);
+      async handleLogin() {
+        try {
+          const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              username: this.username,
+              password: this.password
+            })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            this.error = data.error || 'Login failed';
+            this.success = '';
+          } else {
+            this.success = data.message;
+            this.error = '';
+  
+            console.log('Logged in user:', data.user);
+          }
+        } catch (err) {
+          this.error = 'Network error';
+          this.success = '';
+        }
       }
     }
   }).mount('#app');
 </script>
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
