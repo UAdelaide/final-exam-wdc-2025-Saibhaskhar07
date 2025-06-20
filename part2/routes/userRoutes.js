@@ -91,7 +91,8 @@ router.get('/me', (req,res)=>{
     return res.status(401).json({error:'Not logged in '});
   }
   res.json({
-    user_id: req.session.user_id
+    user_id: req.session.user_id,
+    role: req.session.role
   })
 })
 
