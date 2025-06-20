@@ -98,7 +98,7 @@
             }) ;
             const data = await res.json()
             if(!res.ok) throw new Error(data.error || 'Logout Unsuccessful!');
-            
+            window.location.href='index.html';
           }
 
         }
