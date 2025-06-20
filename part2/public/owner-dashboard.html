@@ -107,7 +107,7 @@
               credentials:"include"
             }) ;
             if(!res.ok) throw new Error('Failed') ;
-            dogs.value
+            dogs.value = await res.json() ;
           }
 
         }
