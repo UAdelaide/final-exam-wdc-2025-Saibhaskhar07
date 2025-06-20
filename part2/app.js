@@ -7,6 +7,8 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
+
+// Cookies for session management
 app.use(session({
     secret : 'secret',
     resave : false,
