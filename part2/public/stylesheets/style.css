@@ -181,4 +181,7 @@ section {
     align-items: center;
 
 }
-.password-input-wrapper 
+.password-input-wrapper input{
+    flex-grow: 1;
+    border-r;
+}
