@@ -176,5 +176,9 @@ section {
 }
 
 .password-input-wrapper{
-    position: ;
+    position: relative;
+    display: flex;
+    align-items: center;
+
 }
+.password-input-wrapper 
