@@ -96,6 +96,15 @@
             this.error = '';
 
             console.log('Logged in user:', data.user);
+            if (data.user.role === 'owner') {
+        window.location.href = 'owner-dashboard.html';
+      } else if (data.user.role === 'walker') {
+        window.location.href = 'walker-dashboard.html';
+      } else {
+        this.error = 'Unknown role';
+        this.success = '';
+      }
+    
 
           }
         } catch (err) {
