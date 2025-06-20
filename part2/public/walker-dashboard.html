@@ -75,7 +75,7 @@
 
         }
 
-
+        //q16
         async function getCurrentUser() {
           try{
             const res = await fetch('/api/users/me',{
@@ -94,7 +94,7 @@
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ walker_id: currentUser.value.user_id })
+              body: JSON.stringify({ walker_id: currentUser.value.user_id }) // q16
             });
             const result = await res.json();
 
@@ -107,7 +107,7 @@
             message.value = '';
           }
         }
-
+        // q16
         onMounted(() => {
           loadWalkRequests();
           getCurrentUser();
