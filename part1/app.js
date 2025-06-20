@@ -100,6 +100,7 @@ let db ;
         FOREIGN KEY (walker_id) REFERENCES Users(user_id),
         FOREIGN KEY (owner_id) REFERENCES Users(user_id),
         CONSTRAINT unique_rating_per_walk UNIQUE (request_id)
+        )
     `);
     // Insert data if table is empty
     const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
