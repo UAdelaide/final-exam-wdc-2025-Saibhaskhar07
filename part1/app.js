@@ -52,6 +52,39 @@ let db ;
     `);
 
     await db.execute(`
+      CREATE TABLE IF NOT EXISTS Dogs (
+        user_id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password_hash VARCHAR(255) NOT NULL,
+        role ENUM('owner', 'walker') NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS Users (
+        user_id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password_hash VARCHAR(255) NOT NULL,
+        role ENUM('owner', 'walker') NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS Users (
+        user_id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password_hash VARCHAR(255) NOT NULL,
+        role ENUM('owner', 'walker') NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+
+    await db.execute(`
       CREATE TABLE IF NOT EXISTS Users (
         user_id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(50) UNIQUE NOT NULL,
