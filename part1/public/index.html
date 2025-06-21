@@ -250,10 +250,13 @@
     }
   }
 
-  let interval
+  let intervalStarted = false ;
   function dogbutton(){
       fetchDog();
-      if(!)
+      if(!intervalStarted) {
+        intervalStarted = true ;
+        
+      }
   }
 
 
