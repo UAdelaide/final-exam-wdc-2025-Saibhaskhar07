@@ -154,7 +154,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
 
 app.get('/api/walkers/summary', async (req, res) => {
   try {
-    const [WalkerSummary] = await db.execute('SELECT Users.username AS walker, COUNT(WalkRatings.rating_id), AVG(WalkRatings.rating),COUNT(CASE WHEN WalkRequests.status = "Completed" AND WalkApplications.status = "Accepted" THEN WalkRequests.request_id END) FROM Users LEFT JOIN WalkRatings On Users.user_id = WalkRatings.walker_id LEFT JOIN WalkApplications ON Users.user_id = WalkApplications.walker_id LEFT JOIN WalkRequests ON WalkApplications.request_id = WalkRequests.request_id WHERE Users.role = "walker" GROUP BY Users.user_id ');
+    const [WalkerSummary] = await db.execute('SELECT Users.username AS walker_username, COUNT(WalkRatings.rating_id), AVG(WalkRatings.rating),COUNT(CASE WHEN WalkRequests.status = "Completed" AND WalkApplications.status = "Accepted" THEN WalkRequests.request_id END) FROM Users LEFT JOIN WalkRatings On Users.user_id = WalkRatings.walker_id LEFT JOIN WalkApplications ON Users.user_id = WalkApplications.walker_id LEFT JOIN WalkRequests ON WalkApplications.request_id = WalkRequests.request_id WHERE Users.role = "walker" GROUP BY Users.user_id ');
     res.json(WalkerSummary);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch Walker Summary' });
