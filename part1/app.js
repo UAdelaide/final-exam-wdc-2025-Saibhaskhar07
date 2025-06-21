@@ -143,6 +143,7 @@ app.get('/api/Dogs', async (req, res) => {
   }
 });
 
+// Route to return walkrequests as JSON
 app.get('/api/walkrequests/open', async (req, res) => {
   try {
     const [WalkRequests] = await db.execute('SELECT WalkRequests.request_id, Dogs.name as dog_name, WalkRequests.requested_time, WalkRequests.duration_minutes, WalkRequests.location, Users.username AS owner_username FROM WalkRequests INNER JOIN Dogs ON WalkRequests.dog_id = Dogs.dog_id INNER JOIN Users ON Dogs.owner_id = Users.user_id WHERE WalkRequests.Status = "open"')
@@ -152,6 +153,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
   }
 });
 
+// Route to return walkersSummary as JSON
 app.get('/api/walkers/summary', async (req, res) => {
   try {
     const [WalkerSummary] = await db.execute('SELECT Users.username AS walker_username, COUNT(WalkRatings.rating_id) AS total_ratings, AVG(WalkRatings.rating) AS average_rating,COUNT(CASE WHEN WalkRequests.status = "Completed" AND WalkApplications.status = "Accepted" THEN WalkRequests.request_id END) AS completed_walks FROM Users LEFT JOIN WalkRatings On Users.user_id = WalkRatings.walker_id LEFT JOIN WalkApplications ON Users.user_id = WalkApplications.walker_id LEFT JOIN WalkRequests ON WalkApplications.request_id = WalkRequests.request_id WHERE Users.role = "walker" GROUP BY Users.user_id ');
@@ -160,6 +162,7 @@ app.get('/api/walkers/summary', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch Walker Summary' });
   }
 });
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;
