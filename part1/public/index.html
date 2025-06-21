@@ -260,8 +260,10 @@
   }
 
   ['button1','button2','button3'].forEach(id =>{
-    document.getElementById(id).addEventListener('click',dogbutton)
-  })
+    document.getElementById(id).addEventListener('click',dogbutton) ;
+  }) ;
+
+  fetchDog();
 
   const book = document.getElementById('booking') ;
   book.addEventListener('click',()=> {
