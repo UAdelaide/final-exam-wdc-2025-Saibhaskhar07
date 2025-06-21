@@ -29,6 +29,7 @@
       </form>
 
       <hr />
+
       <!-- Table created for question 17  -->
       <h1 class="mb-4 text-primary">All Dogs</h1>
       <table class="table table-striped" v-if="dogs.length">
@@ -110,6 +111,7 @@
           }
         },
 
+        
         async fetchDogs() {
           try {
             const res = await fetch('/api/dog');
