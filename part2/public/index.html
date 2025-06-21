@@ -111,7 +111,7 @@
           }
         },
 
-        
+        // API Request created for Question 17
         async fetchDogs() {
           try {
             const res = await fetch('/api/dog');
@@ -143,7 +143,7 @@
         }
       },
       mounted() {
-        this.fetchDogs(); // Correct Vue syntax
+        this.fetchDogs(); 
       }
     }).mount('#app');
   </script>
